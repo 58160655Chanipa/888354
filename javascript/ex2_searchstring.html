@@ -5,29 +5,46 @@ function myFunction() {
 
   var x = document.getElementById("myTextarea").value;
   var y = document.getElementById("search").value;
+  var arr = x.split(" ");
+  var count=0;
+  var status=0;
+  for(var i=0;i<arr.length;i++){
+      if(document.getElementById("yes").checked){
 
-if(document.getElementById("yes").checked){
-  var word = new RegExp(y,'g');
-  var matches = x.match(word);
+        var word = new RegExp(y,'g');
+        var matches = arr[i].match(word);
 
-    if (matches === null)
-    {
-        document.getElementById("demo").innerHTML = "No results"; // Any message or empty
-        return;
-    }
-    document.getElementById("demo").innerHTML =  matches.length ;
-    }
-    if(document.getElementById("no").checked){
-      var word = new RegExp(y,'gi');
-      var matches = x.match(word);
+          if (matches == null)
+          {
+              status=1;
 
-    if (matches === null)
-    {
-        document.getElementById("demo").innerHTML = "No results"; // Any message or empty
-        return;
-    }
-    document.getElementById("demo").innerHTML =  matches.length ;
-    }
+          }
+          else {
+            count++;
+            status=0;
+          }
+        }
+
+      else if(document.getElementById("no").checked){
+
+            var word = new RegExp(y,'gi');
+            var matches = arr[i].match(word);
+
+          if (matches == null)
+          {
+              status=1;
+
+          }
+          else {
+            count++;
+            status=0;
+          }
+        }
+      }
+      document.getElementById("demo").innerHTML = count;
+      if(status=1){
+        document.getElementById("demo").innerHTML= "No Result";
+      }
 }
 
 
