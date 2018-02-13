@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<center>
+<h1>Ex - Random Number for Answer</h1>
+<input type="button" name="random" onclick="myFunction()" value="Random Number"><br><br>
+<p id="x" style="display:inline" ></p>   <p id="y" style="display:inline" ></p> &nbsp;
+<input type="text" id="sum"><br><br>
+<input type="button" name="send" onclick="sendAnswer()" value="Send Answer"><br><br>
+Result : <p id="answer" style="display:inline" ></p>
+</center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+function myFunction() {
+     $('#x').html(Math.floor((Math.random() * 100) + 1)+" +");
+     $('#y').html(" "+Math.floor((Math.random() * 100) + 1));
+}
+function sendAnswer() {
+  var ans = $("#sum").val();
+  var x = parseInt($('#x').html());
+  var y = parseInt($('#y').html());
+var sum=x+y;
+
+  if(sum==ans){
+  $('#answer').html("<font color='green'> That's correct ");
+}else {
+
+  $('#answer').html("<font color='red'> That's Wrong. The Answer is : "+sum);
+}
+
+}
+</script>
+
+</body>
+</html>

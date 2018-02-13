@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js"></script>
+<script>
+
+function highlight_words(){
+      var text =$("#para").html();
+      var word = $("#keywords").val();
+      var x = new RegExp(word,'g');
+      var matches = text.match(x);
+      if (matches == null){
+         $("#demp").html("No Result");
+         return;
+      }
+      else{
+        $("#demo").html(matches.length);
+      }
+      $("#para").unmark();
+      $("#para").mark(matches);
+
+}
+</script>
+</head>
+<style>
+div#txt_line{
+    height:220px;
+    width:60%;
+    border:2px solid black;
+}
+p#para{
+  height: 50px;
+  width: 75%;
+
+  padding: 10px 25px 25px 70px;
+}
+p#txt_head{
+    width:270px;
+    margin-top:-10px;
+    margin-left:30px;
+    background:white;
+}
+
+</style>
+<body><center>
+<h1>Ex - Highlight Text</h1>3
+Search :<input type="text" id="keywords" ><br><br>
+<input type="button" name="search" onclick="highlight_words()" value="Search">
+<br><br>
+Found : <div id="demo" style="display:inline" ></div><br><br>
+<style>
+
+</style>
+<div  align="left" id="txt_line">
+<p id="txt_head">The Article : Continuous Digital Health</p>
+<p id="para">The way we deal with our health is undergoing a major transformation, not only because mobile Internet technology has made it possible to have continuous access to personal health information, but also because breaking the trend of ever-growing healthcare costs is increasingly necessary. Estimates indicate that more than 70 percent of the world population will have a smartphone by 2017. Connectivity, interoperability, sensing, and instant feedback through smartphones all provide new opportunities for gaining insights into our health behavior. Such insights are improving, and understanding what motivates people to make healthy changes throughout their lifetimes is becoming more important. Internet technology not only lets us continuously monitor an individual's physiological and psychological state, but also allows for building up a lifelong record of physical, mental, and social health.
+</p>
+</div>
+</center>
+</body>
+</html>
